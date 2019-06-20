@@ -1,14 +1,17 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Ionic Blank
+      Catégories
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<!--faire un action sheet sur appui long pour consulter/éditer une catégorie-->
+<!--modifier le "['/category/']" en "['/home/' + category.id]"-->
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let category of categories" [routerLink]="['/game/' + category.id]" routerDirection="forward">
+      <ion-label>{{ category.title }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

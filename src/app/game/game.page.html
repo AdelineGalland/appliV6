@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>game</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="#f5f6f9">
+  <ion-card class="flashcard" [ngClass]=" {question: !questionDisplayed, answer:
+  questionDisplayed}" *ngIf="!stackCompleted">
+
+    <ion-card-title class="QA" padding *ngIf="!questionDisplayed" (click)='onDisplayAnswer()'>
+      {{currentQuestion}}
+    </ion-card-title>
+
+    <ion-card-title class="QA" padding *ngIf="questionDisplayed" (click)='onGetNextQuestion()'>
+      {{currentAnswer}}
+    </ion-card-title>
+
+    <!--    <ion-card-subtitle class="info" padding>
+      Flashcard n° ("à écrire") / {{currentArray.length}}
+    </ion-card-subtitle> -->
+
+  </ion-card>
+
+  <ion-card class="flashcard" *ngIf="stackCompleted" routerLink="/home" routerDirection="root">
+
+    <ion-card-title class="QA">
+      Pile de cartes terminée !
+    </ion-card-title>
+
+    <ion-card-subtitle class="info">
+      Cliquez pour retourner à la page d'accueil !
+    </ion-card-subtitle>
+
+  </ion-card>
+</ion-content>

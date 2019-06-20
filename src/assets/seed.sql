@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS category(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT);
+INSERT or ignore INTO category VALUES (1, '1ère catégorie');
+INSERT or ignore INTO category VALUES (2, '2ème catégorie');
+INSERT or ignore INTO category VALUES (3, '3ème catégorie');
+
+CREATE TABLE IF NOT EXISTS card(id INTEGER PRIMARY KEY AUTOINCREMENT, question TEXT, answer TEXT, categoryId INTEGER);
+INSERT or IGNORE INTO card VALUES (1, '1ère question de la catégorie 1 ?', '1ère réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (2, '2ème question de la catégorie 1 ?', '2ème réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (3, '3ème question de la catégorie 1 ?', '3ème réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (4, '4ème question de la catégorie 1 ?', '4ème réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (5, '5ème question de la catégorie 1 ?', '5ème réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (6, '6ème question de la catégorie 1 ?', '6ème réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (7, '7ème question de la catégorie 1 ?', '7ème réponse de la catégorie 1 !', 1);
+INSERT or IGNORE INTO card VALUES (8, '1ère question de la catégorie 2 ?', '1ère réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (9, '2ème question de la catégorie 2 ?', '2ème réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (10, '3ème question de la catégorie 2 ?', '3ème réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (11, '4ème question de la catégorie 2 ?', '4ème réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (12, '5ème question de la catégorie 2 ?', '5ème réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (13, '6ème question de la catégorie 2 ?', '6ème réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (14, '7ème question de la catégorie 2 ?', '7ème réponse de la catégorie 2 !', 2);
+INSERT or IGNORE INTO card VALUES (15, '1ère question de la catégorie 3 ?', '1ère réponse de la catégorie 3 !', 3);
+INSERT or IGNORE INTO card VALUES (16, '2ème question de la catégorie 3 ?', '2ème réponse de la catégorie 3 !', 3);
+INSERT or IGNORE INTO card VALUES (17, '3ème question de la catégorie 3 ?', '3ème réponse de la catégorie 3 !', 3);
+INSERT or IGNORE INTO card VALUES (18, '4ème question de la catégorie 3 ?', '4ème réponse de la catégorie 3 !', 3);
+INSERT or IGNORE INTO card VALUES (19, '5ème question de la catégorie 3 ?', '5ème réponse de la catégorie 3 !', 3);
+INSERT or IGNORE INTO card VALUES (20, '6ème question de la catégorie 3 ?', '6ème réponse de la catégorie 3 !', 3);
+INSERT or IGNORE INTO card VALUES (21, '7ème question de la catégorie 3 ?', '7ème réponse de la catégorie 3 !', 3);
