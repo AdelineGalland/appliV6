@@ -122,5 +122,6 @@ export class GamePage implements OnInit {
     //changement de la valeur pour pouvoir débloquer le component "question"
     this.questionDisplayed = false;
     return this.currentArray;
+    //test GIT
   }
 }
