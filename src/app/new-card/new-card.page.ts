@@ -21,19 +21,19 @@ export class NewCardPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      let stringId = params.get('id');
+      let stringId = params.get('idCategory');
       this.categoryId = parseInt(stringId, 10);
-      console.log('id de la catégorie sélectionnée : ' + this.categoryId);
+      // console.log('id de la catégorie sélectionnée : ' + this.categoryId);
     })
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    // console.log(form.value);
     this.question = form.value['question'];
-    console.log(this.question);
+    // console.log(this.question);
     this.answer = form.value['answer'];
-    console.log(this.answer);
-    this.service.onAddCard(this.question, this.answer, this.categoryId);
+    // console.log(this.answer);
+    this.service.addCard(this.question, this.answer, this.categoryId);
     form.reset();
     this.presentToast();
   }

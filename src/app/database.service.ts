@@ -130,7 +130,7 @@ export class DatabaseService {
     return this.database.executeSql(query);
   }
 
-  onAddCategory(title) {
+  addCategory(title) {
     console.log('entrée dans addCategory()');
     console.log(typeof title);
     let query = 'INSERT INTO category (title) VALUES (?)';
@@ -160,18 +160,18 @@ export class DatabaseService {
   }
 
   getCardsOfCategory(catId) {
-    console.log('catID : ' + catId);
+    // console.log('catID : ' + catId);
     let query = 'SELECT card.id, card.question, card.answer, card.categoryId FROM card WHERE categoryId = ?';
     //voir category.id = catId voire catId
     return this.database.executeSql(query, [catId])
       .then(data => {
         let cards = [];
-        console.log('entrée dans le .then');
-        console.log(data);
-        console.log(data.rows);
-        console.log(data.rows.length);
+        // console.log('entrée dans le .then');
+        // console.log(data);
+        // console.log(data.rows);
+        // console.log(data.rows.length);
         if (data.rows.length > 0) {
-          console.log('entrée dans le if');
+          // console.log('entrée dans le if');
           for (var i = 0; i < data.rows.length; i++) {
             cards.push({
               id: data.rows.item(i).id,
@@ -204,7 +204,7 @@ export class DatabaseService {
     });
   }
 
-  onAddCard(question, answer, categoryId) {
+  addCard(question, answer, categoryId) {
     let data = [question, answer, categoryId];
     return this.database.executeSql('INSERT INTO card (question, answer, categoryId) VALUES (?, ?, ?)', data).then(_ => {
       this.loadCards();

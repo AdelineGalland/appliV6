@@ -16,9 +16,6 @@ export class HomePage implements OnInit {
   category = {};
   card = {};
 
-  hasCards: boolean;
-
-  //selectedView = 'devs';
 
   constructor(private db: DatabaseService) {
     console.log("constructeur de homePage");
@@ -36,17 +33,21 @@ export class HomePage implements OnInit {
     });
   }
 
-  addCategory() {
-    this.db.onAddCategory(this.category['title'])
-      .then(_ => {
-        this.category = {};
-      });
-  }
+  /*   onDeleteCategory() {
+      //toast "êtes-vous sûr.e ?"
+      this.db.deleteCategory(category.id);
+    } */
+  /*   onAddCategory() {
+      this.db.addCategory(this.category['title'])
+        .then(_ => {
+          this.category = {};
+        });
+    } */
 
-  onAddCard() {
-    this.db.onAddCard(this.card['question'], this.card['answer'], this.card['categoryId'])
-      .then(_ => {
-        this.card = {};
-      });
-  }
+  /*   onAddCard() {
+      this.db.addCard(this.card['question'], this.card['answer'], this.card['categoryId'])
+        .then(_ => {
+          this.card = {};
+        });
+    } */
 }

@@ -29,7 +29,7 @@ export class NewCategoryPage implements OnInit {
     console.log(form.value);
     this.title = form.value['title'];
     console.log(this.title);
-    this.service.onAddCategory(this.title);
+    this.service.addCategory(this.title);
     this.presentToast();
     /* this.service.getHighestCatId().then(data => {
       this.newId = data + 1;

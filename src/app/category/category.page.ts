@@ -12,20 +12,30 @@ export class CategoryPage implements OnInit {
   category: Category;
   cards = [];
 
-  constructor(private db: DatabaseService, private route: ActivatedRoute) { }
+  constructor(private db: DatabaseService, private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(params => {
+      let catId = params.get('id');
+      console.log('catId: ' + catId);
+      this.db.getDatabaseState().subscribe(rdy => {
+        if (rdy) {
+          this.db.getCategory(catId).then(data => {
+            this.category = data;
+            console.log('this.category : ' + this.category);
+            console.log('this.category.title : ' + this.category.title);
+          }).then(_ => {
+            this.db.getCardsOfCategory(catId).then(data => {
+              this.cards = data;
+            })
+          })
+        }
+      })
+
+    });
+  }
 
   ngOnInit() {
 
-    this.route.paramMap.subscribe(params => {
-      let catId = params.get('id');
-      this.db.getCategory(catId).then(data => {
-        this.category = data;
-        console.log(this.category);
-      }).then(_ => {
-        this.db.getCardsOfCategory(catId);
-        console.log(this.db.getCardsOfCategory(catId));
-      })
-    });
+
   }
 
   //getCard(this.category.id, randomCardId) {}

@@ -48,7 +48,7 @@ export class GamePage implements OnInit {
     this.route.paramMap.subscribe(params => {
 
       // récupération de l'id dans l'URL
-      this.catId = parseInt(params.get('id'));
+      this.catId = parseInt(params.get('idCategory'));
       console.log('this.catId : ' + this.catId);
     });
     // récupéartion de la catégorie correspondante

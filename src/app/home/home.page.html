@@ -16,9 +16,10 @@
       une nouvelle catégorie
     </ion-item>
     <br>
-    <ion-item *ngFor="let category of categories" [routerLink]="['/game/' + category.id]" routerDirection="forward">
-      <ion-label>{{ category.title }}</ion-label>
-      <ion-icon name="eye" color="medium" padding></ion-icon>
+    <ion-item *ngFor="let category of categories" category.id="[category.id]">
+      <ion-label [routerLink]="['/game/' + category.id]" routerDirection="forward">{{ category.title }}</ion-label>
+      <ion-icon name="eye" color="medium" padding [routerLink]="['/category/' + category.id]">{{ category.id }}
+      </ion-icon>
       <ion-icon name="trash" color="medium" padding></ion-icon>
 
     </ion-item>
