@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS category(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT);
+CREATE TABLE IF NOT EXISTS category(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR);
 INSERT or ignore INTO category VALUES (1, '1ère catégorie');
 INSERT or ignore INTO category VALUES (2, '2ème catégorie');
 INSERT or ignore INTO category VALUES (3, '3ème catégorie');

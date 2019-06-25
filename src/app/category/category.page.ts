@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService, Category } from '../database.service';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { DatabaseService, Category, Card } from '../database.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -10,6 +10,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 export class CategoryPage implements OnInit {
 
   category: Category;
+  cards = [];
 
   constructor(private db: DatabaseService, private route: ActivatedRoute) { }
 
@@ -17,11 +18,13 @@ export class CategoryPage implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       let catId = params.get('id');
-
       this.db.getCategory(catId).then(data => {
         this.category = data;
         console.log(this.category);
-      });
+      }).then(_ => {
+        this.db.getCardsOfCategory(catId);
+        console.log(this.db.getCardsOfCategory(catId));
+      })
     });
   }
 

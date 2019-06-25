@@ -63,24 +63,26 @@ export class DatabaseService {
 
   // appelée dans seedDatabase()
   loadCategories() {
-    return this.database.executeSql('SELECT * FROM category', []).then(data => {
+    return this.database.executeSql('SELECT * FROM category', [])
+      .then(data => {
 
-      // création d'une constante de type Category initialisée à tableau vide.
-      let categories: Category[] = [];
+        // création d'une constante de type Category initialisée à tableau vide.
+        let categories: Category[] = [];
 
-      if (data.rows.length > 0) {
-        for (let i = 0; i < data.rows.length; i++) {
+        if (data.rows.length > 0) {
+          for (let i = 0; i < data.rows.length; i++) {
 
-          // on remplit le tableau avec chacune des lignes du résultat de la requête
-          categories.push({
-            id: data.rows.item(i).id,
-            title: data.rows.item(i).title
-          });
+            // on remplit le tableau avec chacune des lignes du résultat de la requête
+            categories.push({
+              id: data.rows.item(i).id,
+              title: data.rows.item(i).title
+            });
+          }
         }
-      }
-      // dans la variable categories déclarée dans la class, on met le contenu de la variable categories tout juste modifiée
-      this.categories.next(categories);
-    });
+        // dans la variable categories déclarée dans la class, on met le contenu de la variable categories tout juste modifiée
+        this.categories.next(categories);
+        console.log(this.categories);
+      });
   }
 
   // appelée dans seedDatabase()
@@ -123,9 +125,19 @@ export class DatabaseService {
     });
   }
 
-  addCategory(title) {
-    let data = [title];
-    return this.database.executeSql('INSERT INTO developer (name) VALUES (?, ?, ?)', data).then(data => {
+  getHighestCatId() {
+    let query = 'SELECT MAX(id) FROM category'
+    return this.database.executeSql(query);
+  }
+
+  onAddCategory(title) {
+    console.log('entrée dans addCategory()');
+    console.log(typeof title);
+    let query = 'INSERT INTO category (title) VALUES (?)';
+    /* let stringifiedTitle = title.toString();
+    console.log(stringifiedTitle); */
+    return this.database.executeSql(query, [title]).then(_ => {
+      console.log('loadCategories()...');
       this.loadCategories();
     });
   }
@@ -192,8 +204,8 @@ export class DatabaseService {
     });
   }
 
-  addCard(question, answer, categoryTitle) {
-    let data = [question, answer, categoryTitle];
+  onAddCard(question, answer, categoryId) {
+    let data = [question, answer, categoryId];
     return this.database.executeSql('INSERT INTO card (question, answer, categoryId) VALUES (?, ?, ?)', data).then(_ => {
       this.loadCards();
     });

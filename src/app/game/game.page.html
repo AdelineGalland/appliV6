@@ -1,10 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>game</ion-title>
+    <ion-title *ngIf="isCategoryEmpty">Catégorie vide !</ion-title>
+    <ion-title *ngIf="!isCategoryEmpty">Game</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="#f5f6f9">
+<ion-content *ngIf="isCategoryEmpty" [routerLink]="['/new-card/' + catId]">
+  <ion-button>Ajouter des cartes</ion-button>
+</ion-content>
+
+<ion-content color="#f5f6f9" *ngIf="!isCategoryEmpty">
   <ion-card class="flashcard" [ngClass]=" {question: !questionDisplayed, answer:
   questionDisplayed}" *ngIf="!stackCompleted">
 

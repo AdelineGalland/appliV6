@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'home/:id', loadChildren: './category/category.module#CategoryPageModule' },
   { path: 'game/:id', loadChildren: './game/game.module#GamePageModule' },
   { path: 'card', loadChildren: './card/card.module#CardPageModule' },
+  { path: 'new-category', loadChildren: './new-category/new-category.module#NewCategoryPageModule' },
+  { path: 'new-card/:id', loadChildren: './new-card/new-card.module#NewCardPageModule' },
 ];
 
 @NgModule({

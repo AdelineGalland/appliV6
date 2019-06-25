@@ -9,9 +9,26 @@
 <!--faire un action sheet sur appui long pour consulter/éditer une catégorie-->
 <!--modifier le "['/category/']" en "['/home/' + category.id]"-->
 <ion-content padding>
+  <p>Appui court pour lancer le jeu <br>Appui long pour éditer</p>
   <ion-list>
+    <ion-item>
+      <ion-icon name="add-circle" padding [routerLink]="['/new-category']" routerDirection="forward"></ion-icon>Créer
+      une nouvelle catégorie
+    </ion-item>
+    <br>
     <ion-item *ngFor="let category of categories" [routerLink]="['/game/' + category.id]" routerDirection="forward">
       <ion-label>{{ category.title }}</ion-label>
+      <ion-icon name="eye" color="medium" padding></ion-icon>
+      <ion-icon name="trash" color="medium" padding></ion-icon>
+
     </ion-item>
+    <!--     <ion-item *ngFor="let category of categories" [routerLink]="['/new-card/' + category.id]" routerDirection="forward">
+      <ion-label color="medium" text-wrap>
+        <i>{{ category.title }} <br>(cliquer pour compléter) </i>
+      </ion-label>
+    </ion-item> -->
+
   </ion-list>
+
+
 </ion-content>

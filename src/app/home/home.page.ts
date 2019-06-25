@@ -16,6 +16,8 @@ export class HomePage implements OnInit {
   category = {};
   card = {};
 
+  hasCards: boolean;
+
   //selectedView = 'devs';
 
   constructor(private db: DatabaseService) {
@@ -35,18 +37,16 @@ export class HomePage implements OnInit {
   }
 
   addCategory() {
-    this.db.addCategory(this.category['title'])
+    this.db.onAddCategory(this.category['title'])
       .then(_ => {
         this.category = {};
       });
   }
 
-  addCard() {
-    this.db.addCard(this.card['question'], this.card['answer'], this.card['categoryTitle'])
+  onAddCard() {
+    this.db.onAddCard(this.card['question'], this.card['answer'], this.card['categoryId'])
       .then(_ => {
         this.card = {};
       });
   }
-
-
 }

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>newCategory</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <!-- <div padding class="form-group">
+        <label for="idFlashcard" padding style="text-align:center">
+          <h2>Flashcard n°{{newFlashcardId}}</h2>
+        </label>
+        <input type="hidden" id="idFlashcard" class="form-control" name="idFlashcard" [value]="newFlashcardId" ngModel>
+
+      </div> -->
+      <div padding class="form-group">
+        <label for="title" padding>
+          Quel est le titre de la catégorie ?
+        </label>
+        <input class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
+          class="form-control" value='title' placeholder='' name="title" ngModel required>
+      </div>
+
+      <!-- 
+        <ion-button class="button" color="dark" expand="block" size="large" shape="round" routerLink="/new-flashcard"
+          routerDirection="root" type="submit" [disabled]="f.invalid" padding>
+          Ajouter et<br />créer nouvelle flashcard</ion-button> -->
+
+      <ion-button class=" button" color="dark" expand="block" size="large" shape="round" type="submit"
+        [disabled]="f.invalid" padding [routerLink]="['/new-card/' + newId]" routerDirection="forward">
+        Créer flashcards</ion-button>
+    </form>
+  </ion-card>
+</ion-content>

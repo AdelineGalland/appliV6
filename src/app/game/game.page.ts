@@ -29,6 +29,8 @@ export class GamePage implements OnInit {
   //prendra la valeur "true" pour indiquer le moment où toutes les flashcards ont été vues
   stackCompleted: boolean;
 
+  isCategoryEmpty: boolean;
+
   //tableau provisoire : copie du tableau, à laquelle on retirera les élements au fur et à mesure de leur utilisation
   currentArray: any[];
 
@@ -48,39 +50,45 @@ export class GamePage implements OnInit {
       // récupération de l'id dans l'URL
       this.catId = parseInt(params.get('id'));
       console.log('this.catId : ' + this.catId);
-      // récupéartion de la catégorie correspondante
-      this.db.getCategory(this.catId)
-        .then(data => {
-          this.currentCategory = data;
-          console.log('currentCategory id : ' + this.currentCategory.id);
-        }).then(_ => {
-          console.log('this.currentCategory du .then: ' + this.currentCategory);
-          console.log(this.currentCategory.id);
-          //récupération du tableau de cartes de la catégorie sélectionnée
-          this.db.getCardsOfCategory(this.currentCategory.id)
-            .then(data => {
+    });
+    // récupéartion de la catégorie correspondante
+    this.db.getCategory(this.catId)
+      .then(data => {
+        this.currentCategory = data;
+        console.log('currentCategory id : ' + this.currentCategory.id);
+      }).then(_ => {
+        console.log('this.currentCategory du .then: ' + this.currentCategory);
+        console.log(this.currentCategory.id);
+        //récupération du tableau de cartes de la catégorie sélectionnée
+        this.db.getCardsOfCategory(this.currentCategory.id)
+
+          .then(data => {
+            console.log('data :' + data);
+            if (data == undefined) {
+              this.isCategoryEmpty = true;
+              console.log(this.isCategoryEmpty);
+            }
+            else {
+              this.isCategoryEmpty = false;
+
+              console.log(this.isCategoryEmpty);
               console.log('data : ' + data);
               this.cardsList = data;
               console.log('this.cardsList : ' + this.cardsList);
-            })
-            .then(_ => {
+              /*  }
+             .then(_ => { */
               // copie de ce tableau dans un tableau modifiable
               this.currentArray = this.cardsList.slice();
               console.log(this.currentArray);
+              console.log('this.cardsList.length : ' + this.cardsList.length);
               // récupération d'une 1ère carte au hasard
               this.getRandomFlashcard();
-            })
-        }
-        )
-      /* 
-      console.log('ça marche'); */
-    });
-
-
+            }
+          });
+      });
   }
 
   getRandomFlashcard() {
-
     console.log('current array de get random' + this.currentArray);
     //détermination d'un index au hasard, inférieur à la taille du tableau
     this.randomIndex = Math.floor(Math.random() * 10);
