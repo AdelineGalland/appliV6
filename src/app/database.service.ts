@@ -151,11 +151,13 @@ export class DatabaseService {
   }
 
   updateCategory(category: Category) {
-    let data = [category.title];
-    let query = 'UPDATE category SET title = ? WHERE id = ${category.id}';
+    let data = [category.title, category.id];
+    console.log(category.title, category.id);
+    let query = 'UPDATE category SET title = ? WHERE id = ?';
     return this.database.executeSql(query, data)
       .then(_ => {
         this.loadCategories();
+        console.log('catégories bien loadées');
       })
   }
 

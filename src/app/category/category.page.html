@@ -1,25 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Catégorie à éditer</ion-title>
+    <ion-title>CategoryPage</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!--app routing module : mettre home/:id au lieu de categorie ; idem dans le router link de la page home.html-->
 <ion-content>
-
-  <h2>{{category.title}}
-
-    <ion-icon name="create" color="medium" [routerLink]="['/category/' + category.id]">
-      {{ category.id }}
-    </ion-icon>
-  </h2>
   <ion-list>
+
+    <ion-item [routerLink]="['/edit-category/' + category.id]">
+      <ion-label>
+        <h2>{{ category.title }}</h2>
+      </ion-label>
+      <ion-icon name="create" color="medium" [routerLink]="['/category/' + category.id]"></ion-icon>
+    </ion-item><br>
+
     <ion-item *ngFor="let card of cards" [routerLink]="['/card']">
       <ion-label text-wrap>{{ card.question }}<br>{{ card.answer }}
       </ion-label>
-      <ion-icon name="create" color="medium" [routerLink]="['/category/' + category.id]">{{ category.id }}
-      </ion-icon>
+      <ion-icon name="create" color="medium" [routerLink]="['/category/' + category.id]"></ion-icon>
       <ion-icon name="trash" color="medium" padding></ion-icon>
     </ion-item>
+
   </ion-list>
 </ion-content>
