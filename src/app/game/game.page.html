@@ -1,12 +1,15 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title *ngIf="isCategoryEmpty">Catégorie vide !</ion-title>
     <ion-title *ngIf="!isCategoryEmpty">GamePage</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="isCategoryEmpty" [routerLink]="['/new-card/' + catId]">
-  <ion-button>Ajouter des cartes</ion-button>
+  <ion-item [routerLink]="['/new-card/' + category.id]">
+    <ion-icon name="add-circle" padding [routerLink]="['/new-card/' + category.id]" routerDirection="forward">
+    </ion-icon>Ajouter des cartes
+  </ion-item>
 </ion-content>
 
 <ion-content color="#f5f6f9" *ngIf="!isCategoryEmpty">

@@ -143,8 +143,11 @@ export class DatabaseService {
   }
 
   deleteCategory(id) {
-    let query = 'DELETE FROM category WHERE id = ?';
-    return this.database.executeSql(query, [id]).then(_ => {
+    console.log(id);
+    let queryCategory = 'DELETE FROM category WHERE id = ?';
+    let queryCard = 'DELETE FROM card WHERE categoryId = ?'; return this.database.executeSql(queryCategory, [id]).then(_ => {
+      return this.database.executeSql(queryCard, [id])
+    }).then(_ => {
       this.loadCategories();
       this.loadCards();
     });
@@ -194,9 +197,10 @@ export class DatabaseService {
     return this.cards.asObservable();
   }
 
-  getCard(selectedCategoryId, cardId): Promise<Card> {
-    let query = 'SELECT card.question, card.answer FROM card JOIN category ON category.id = card.categoryId WHERE category.id = :catId AND card.id = :cardId';
-    return this.database.executeSql(query, [{ "catId": selectedCategoryId }, { "cardId": cardId }]).then(data => {
+  getCard(cardId): Promise<Card> {
+    let query = 'SELECT card.question, card.answer, categoryId FROM card WHERE card.id = ?';
+    return this.database.executeSql(query, [cardId]).then(data => {
+      console.log(data);
       return {
         id: data.rows.item(0).id,
         question: data.rows.item(0).question,
@@ -210,6 +214,28 @@ export class DatabaseService {
     let data = [question, answer, categoryId];
     return this.database.executeSql('INSERT INTO card (question, answer, categoryId) VALUES (?, ?, ?)', data).then(_ => {
       this.loadCards();
+    });
+  }
+
+  // rattacher carte à une autre catégorie
+
+  updateCard(card: Card) {
+    let data = [card.question, card.answer, card.id];
+    console.log(card.question, card.answer, card.id);
+    let query = 'UPDATE card SET question = ?, answer = ? WHERE id = ?';
+    return this.database.executeSql(query, data)
+      .then(_ => {
+        this.loadCards();
+        console.log('cards bien loadées');
+      })
+  }
+
+  deleteCard(id) {
+    console.log('entrée dans deletecard');
+    let query = 'DELETE FROM card WHERE id = ?';
+    return this.database.executeSql(query, [id]).then(_ => {
+      this.loadCards();
+      console.log('cartes bien loadées');
     });
   }
 

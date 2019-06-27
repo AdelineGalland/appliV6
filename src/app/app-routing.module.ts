@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'new-category', loadChildren: './new-category/new-category.module#NewCategoryPageModule' },
   { path: 'new-card/:idCategory', loadChildren: './new-card/new-card.module#NewCardPageModule' },
   { path: 'edit-category/:id', loadChildren: './edit-category/edit-category.module#EditCategoryPageModule' },
-  { path: 'edit-card', loadChildren: './edit-card/edit-card.module#EditCardPageModule' },
+  { path: 'edit-card/:idCategory/:idCard', loadChildren: './edit-card/edit-card.module#EditCardPageModule' },
 ];
 
 @NgModule({

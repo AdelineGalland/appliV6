@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>new-card</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -18,15 +18,15 @@
         <label for="title" padding>
           Quel est la question ?
         </label>
-        <input class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
-          class="form-control" value='title' placeholder='' name="question" ngModel required>
+        <ion-textarea class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
+          class="form-control" value='question' placeholder='question' name="question" ngModel required></ion-textarea>
       </div>
       <div padding class="form-group">
         <label for="title" padding>
           Quel est la réponse ?
         </label>
-        <input class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
-          class="form-control" value='title' placeholder='' name="answer" ngModel required>
+        <ion-textarea class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
+          class="form-control" value='answer' placeholder='réponse' name="answer" ngModel required></ion-textarea>
       </div>
       <!-- 
         <ion-button class="button" color="dark" expand="block" size="large" shape="round" routerLink="/new-flashcard"

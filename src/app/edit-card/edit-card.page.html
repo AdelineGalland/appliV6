@@ -1,9 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>edit-card</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title>Editer une flashcard</ion-title>
   </ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="card" padding>
+  <ion-list>
+    <ion-item margin>
+      <ion-label for="question" padding margin>
+      </ion-label>
+      <ion-input [(ngModel)]="card.question"></ion-input>
+    </ion-item>
+    <ion-item margin>
+      <ion-label for="answer" padding margin>
+      </ion-label>
+      <ion-input [(ngModel)]="card.answer"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="onEditCard()" [routerLink]="['/card/' + card.id]" routerDirection="root" color="secondary">
+    Soumettre les
+    modifications</ion-button>
+
+  <ion-button (click)="onDeleteCard()" [routerLink]="['/home/']" routerDirection="root" color="secondary">
+    Supprimer flashcard</ion-button>
 
 </ion-content>

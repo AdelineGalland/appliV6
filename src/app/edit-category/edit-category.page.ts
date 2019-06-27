@@ -48,5 +48,13 @@ export class EditCategoryPage implements OnInit {
     });
     toast.present();
   }
+
+  onDeleteCategory() {
+    console.log(this.category.id);
+    this.db.deleteCategory(this.category.id).then(_ => {
+      console.log('delete category ok');
+
+    })
+  }
 }
 

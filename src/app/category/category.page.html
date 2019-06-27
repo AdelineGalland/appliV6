@@ -1,25 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>CategoryPage</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title *ngIf="isCategoryEmpty">Catégorie vide !</ion-title>
+    <ion-title *ngIf="!isCategoryEmpty">CategoryPage</ion-title>
+    <ion-buttons slot="start" [routerLink]="['/home/']">
+      <ion-back-button defaultHref="/">
+      </ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-
-    <ion-item [routerLink]="['/edit-category/' + category.id]">
+  <ion-list *ngIf="category">
+    <ion-item *ngIf="!isCategoryEmpty" [routerLink]="['/edit-category/' + category.id]" routerDirection="root">
       <ion-label>
-        <h2>{{ category.title }}</h2>
+        <h1>{{ category.title }}</h1>
       </ion-label>
-      <ion-icon name="create" color="medium" [routerLink]="['/category/' + category.id]"></ion-icon>
+      <ion-icon name="create" color="medium" [routerLink]="['/edit-category/' + category.id]"></ion-icon>
     </ion-item><br>
 
-    <ion-item *ngFor="let card of cards" [routerLink]="['/card']">
+    <ion-item [routerLink]="['/new-card/' + category.id]">
+      <ion-icon name="add-circle" padding [routerLink]="['/new-card/' + category.id]" routerDirection="forward">
+      </ion-icon>
+      Ajouter des cartes
+    </ion-item><br>
+
+    <ion-item *ngFor="let card of cards">
       <ion-label text-wrap>{{ card.question }}<br>{{ card.answer }}
       </ion-label>
-      <ion-icon name="create" color="medium" [routerLink]="['/category/' + category.id]"></ion-icon>
-      <ion-icon name="trash" color="medium" padding></ion-icon>
+      <ion-icon name="create" color="medium" [routerLink]="['/edit-card/' + category.id + '/' + card.id]"></ion-icon>
     </ion-item>
-
   </ion-list>
 </ion-content>

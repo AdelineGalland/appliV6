@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-title>Editer une catégorie</ion-title>
   </ion-toolbar>
   <ion-buttons slot="start">
-    <ion-back-button defaultHref="/home"></ion-back-button>
+    <ion-back-button></ion-back-button>
   </ion-buttons>
 </ion-header>
 
@@ -14,7 +14,12 @@
     <ion-input [(ngModel)]="category.title"></ion-input>
   </ion-item>
 
-  <ion-button (click)="onEditCategory()">Soumettre les
+  <ion-button (click)="onEditCategory()" [routerLink]="['/category/' + category.id]" routerDirection="root"
+    color="secondary">
+    Soumettre les
     modifications</ion-button>
+
+  <ion-button (click)="onDeleteCategory()" [routerLink]="['/home/']" routerDirection="root" color="secondary">
+    Supprimer catégorie</ion-button>
 
 </ion-content>
