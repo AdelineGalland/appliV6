@@ -11,15 +11,22 @@ import { ActivatedRoute } from '@angular/router';
 export class EditCardPage implements OnInit {
 
   card: Card;
+  catId: string;
+  cardId: number;
 
   constructor(private db: DatabaseService, private toastController: ToastController, private route: ActivatedRoute) {
     this.route.paramMap.subscribe(params => {
-      let cardId = params.get('idCard');
-      let catId = params.get('idCategory');
-      console.log('cardId + catId : ' + cardId + catId);
+
+      let stringCardId = params.get('idCard');
+      this.cardId = parseInt(stringCardId, 10);
+
+      this.catId = params.get('idCategory');
+      console.log('cardId + catId : ' + this.cardId + ' / ' + this.catId);
       this.db.getDatabaseState().subscribe(rdy => {
         if (rdy) {
-          this.db.getCard(cardId).then(data => {
+          console.log(this.cardId);
+          this.db.getCard(this.cardId).then(data => {
+            console.log(data);
             this.card = data;
             console.log(this.card);
           });
@@ -34,7 +41,7 @@ export class EditCardPage implements OnInit {
 
   //validators pattern : https://ionicthemes.com/tutorials/about/forms-and-validation-in-ionic
 
-  onEditCategory() {
+  onEditCard() {
     console.log(this.card);
     this.db.updateCard(this.card).then(_ => {
       this.presentToast();

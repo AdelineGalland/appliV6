@@ -70,7 +70,6 @@ export class GamePage implements OnInit {
             }
             else {
               this.isCategoryEmpty = false;
-
               console.log(this.isCategoryEmpty);
               console.log('data : ' + data);
               this.cardsList = data;

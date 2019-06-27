@@ -198,7 +198,10 @@ export class DatabaseService {
   }
 
   getCard(cardId): Promise<Card> {
-    let query = 'SELECT card.question, card.answer, categoryId FROM card WHERE card.id = ?';
+    console.log(cardId);
+    console.log(typeof cardId);
+
+    let query = 'SELECT card.id, card.question, card.answer, categoryId FROM card WHERE card.id = ?';
     return this.database.executeSql(query, [cardId]).then(data => {
       console.log(data);
       return {

@@ -21,11 +21,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-button (click)="onEditCard()" [routerLink]="['/card/' + card.id]" routerDirection="root" color="secondary">
+  <ion-button (click)="onEditCard()" [routerLink]="['/category/' + catId]" routerDirection="root" color="secondary">
     Soumettre les
     modifications</ion-button>
 
-  <ion-button (click)="onDeleteCard()" [routerLink]="['/home/']" routerDirection="root" color="secondary">
+  <ion-button (click)="onDeleteCard()" [routerLink]="['/category/' + catId]" routerDirection="root" color="secondary">
     Supprimer flashcard</ion-button>
 
 </ion-content>
