@@ -27,8 +27,14 @@
       {{currentAnswer}}
     </ion-card-title>
 
-    <ion-card-subtitle class="info" padding>
+    <ion-card-subtitle *ngIf="(currentArray.length -1) > 1" class="info" padding>
       {{currentArray.length -1}} cartes restantes
+    </ion-card-subtitle>
+    <ion-card-subtitle *ngIf="(currentArray.length -1) == 1" class="info" padding>
+      {{currentArray.length -1}} carte restante
+    </ion-card-subtitle>
+    <ion-card-subtitle *ngIf="(currentArray.length -1) < 1" class="info" padding>
+      Dernière carte !
     </ion-card-subtitle>
 
   </ion-card>
