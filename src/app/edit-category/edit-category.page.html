@@ -1,25 +1,26 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>Editer une catégorie</ion-title>
   </ion-toolbar>
-  <ion-buttons slot="start">
-    <ion-back-button></ion-back-button>
-  </ion-buttons>
 </ion-header>
 
-<ion-content padding>
+<ion-content *ngIf="category" padding>
   <ion-item margin>
     <ion-label for="title" padding margin>
     </ion-label>
     <ion-input [(ngModel)]="category.title"></ion-input>
   </ion-item>
 
-  <ion-button (click)="onEditCategory()" [routerLink]="['/category/' + category.id]" routerDirection="root"
-    color="secondary">
+  <ion-button (click)="onEditCategory()" [routerLink]="['/category/' + category.id]" routerDirection="root" size="large"
+    color="tertiary">
     Soumettre les
     modifications</ion-button>
 
-  <ion-button (click)="onDeleteCategory()" [routerLink]="['/home/']" routerDirection="root" color="secondary">
+  <ion-button (click)="onDeleteCategory()" [routerLink]="['/home/']" routerDirection="root" size="large"
+    color="tertiary">
     Supprimer catégorie</ion-button>
 
 </ion-content>

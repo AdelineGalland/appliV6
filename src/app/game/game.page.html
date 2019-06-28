@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title *ngIf="isCategoryEmpty">Catégorie vide !</ion-title>
     <ion-title *ngIf="!isCategoryEmpty">GamePage</ion-title>
   </ion-toolbar>
@@ -16,7 +19,7 @@
   <ion-card class="flashcard" [ngClass]=" {question: !questionDisplayed, answer:
   questionDisplayed}" *ngIf="!stackCompleted">
 
-    <ion-card-title class="QA" padding *ngIf="!questionDisplayed" (click)='onDisplayAnswer()'>
+    <ion-card-title id="question" class="QA" padding *ngIf="!questionDisplayed" (click)='onDisplayAnswer()'>
       {{currentQuestion}}
     </ion-card-title>
 
@@ -24,9 +27,9 @@
       {{currentAnswer}}
     </ion-card-title>
 
-    <!--    <ion-card-subtitle class="info" padding>
-      Flashcard n° ("à écrire") / {{currentArray.length}}
-    </ion-card-subtitle> -->
+    <ion-card-subtitle class="info" padding>
+      {{currentArray.length -1}} cartes restantes
+    </ion-card-subtitle>
 
   </ion-card>
 

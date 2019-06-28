@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>new-card</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,15 +18,18 @@
 
       </div> -->
       <div padding class="form-group">
+
         <label for="title" padding>
-          Quel est la question ?
+          Question...
         </label>
         <ion-textarea class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
-          class="form-control" value='question' placeholder='question' name="question" ngModel required></ion-textarea>
+          class="form-control" value='question' placeholder='question' name="question" ngModel required lines="full">
+          <ion-icon name="help"></ion-icon>
+        </ion-textarea>
       </div>
       <div padding class="form-group">
         <label for="title" padding>
-          Quel est la réponse ?
+          <ion-icon name="thumbs-up" margin></ion-icon>Réponse...
         </label>
         <ion-textarea class="button" fill="outline" color="dark" expand="block" size="large" shape="round" type="text"
           class="form-control" value='answer' placeholder='réponse' name="answer" ngModel required></ion-textarea>
@@ -33,12 +39,12 @@
           routerDirection="root" type="submit" [disabled]="f.invalid" padding>
           Ajouter et<br />créer nouvelle flashcard</ion-button> -->
 
-      <ion-button class=" button" color="dark" expand="block" size="large" shape="round" type="submit"
+      <ion-button class=" button" color="tertiary" expand="block" size="large" shape="round" type="submit"
         [disabled]="f.invalid" padding routerDirection="forward">
         Ajouter</ion-button>
     </form>
 
-    <ion-button class=" button" color="dark" expand="block" size="large" shape="round" type="submit" padding
+    <ion-button class=" button" color="tertiary" expand="block" size="large" shape="round" type="submit" padding
       routerLink="/home" routerDirection="root">
       Revenir à l'accueil</ion-button>
   </ion-card>

@@ -34,6 +34,8 @@ export class GamePage implements OnInit {
   //tableau provisoire : copie du tableau, à laquelle on retirera les élements au fur et à mesure de leur utilisation
   currentArray: any[];
 
+  flipped: boolean = false;
+
   constructor(private db: DatabaseService, private route: ActivatedRoute) {
   }
 
@@ -111,6 +113,7 @@ export class GamePage implements OnInit {
   onDisplayAnswer() {
     //changement de la valeur pour pouvoir débloquer le component "réponse"
     this.questionDisplayed = true;
+    this.flipped = !this.flipped;
   }
 
   onGetNextQuestion() {

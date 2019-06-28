@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   category = {};
   card = {};
 
+  more: boolean = false;
 
   constructor(private db: DatabaseService) {
     console.log("constructeur de homePage");
@@ -31,6 +32,9 @@ export class HomePage implements OnInit {
         this.cards = this.db.getCards();
       }
     });
+  }
+  onMore() {
+    this.more = !this.more;
   }
 
   /*   onDeleteCategory() {

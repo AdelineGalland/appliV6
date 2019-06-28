@@ -1,0 +1,66 @@
+.flashcard {
+    vertical-align: center;
+    height: 80%;
+    width: 80%;
+    padding: auto;
+    margin: auto;
+    margin-top: 80px;
+    border-color: black;
+    border-width: 50px;
+    --color: white;
+}
+
+.QA {
+    text-align: center;
+    font-size: 35px;
+    color: #383a3e;
+    height: 90%;
+    padding-top: 50%;
+}
+
+#info {
+    text-align: right;
+}
+
+.question {
+    border-color: purple;
+}
+
+/* #question {
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    display: block;
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 600ms;
+    transition: all 600ms;
+    z-index: 20;
+
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #FFF;
+    text-align: center;
+    line-height: 200px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 50%;
+
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+} */

@@ -1,23 +1,29 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="tertiary">
+    <ion-icon name="more" slot="end" size="large" padding (click)="onMore()"></ion-icon>
     <ion-title>
       HomePage
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<!--faire un action sheet sur appui long pour consulter/éditer une catégorie-->
-<!--modifier le "['/category/']" en "['/home/' + category.id]"-->
 <ion-content padding>
+  <ion-fab vertical="top" horizontal="end" size="large" slot="fixed" edge>
+    <ion-fab-button class="fab" color="dark" [routerLink]="['/new-category']" routerDirection="forward" padding>
+      <ion-icon class="fab" name="ios-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-list>
-    <ion-item>
-      <ion-icon name="add-circle" padding [routerLink]="['/new-category']" routerDirection="forward"></ion-icon>
+    <!--  <ion-item>
+      <ion-icon name="add-circle" ></ion-icon>
       Créer une nouvelle catégorie
     </ion-item>
-    <br>
-    <ion-item *ngFor="let category of categories" category.id="[category.id]">
-      <ion-label [routerLink]="['/game/' + category.id]" routerDirection="forward">{{ category.title }}</ion-label>
-      <ion-icon name="eye" color="medium" padding [routerLink]="['/category/' + category.id]"></ion-icon>
+    <br> -->
+    <ion-item *ngFor="let category of categories" category.id="[category.id]" [routerLink]="['/game/' + category.id]"
+      routerDirection="forward">
+      <ion-label>{{ category.title }}</ion-label>
+      <ion-icon *ngIf="more" [routerLink]="['/category/' + category.id]" slot="end" name="arrow-right">
+      </ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

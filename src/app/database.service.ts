@@ -188,8 +188,6 @@ export class DatabaseService {
           console.log(cards);
           return cards;
         }
-        /*        this.cardsOfCategory.next(cards);
-               console.log(this.cardsOfCategory); */
       });
   }
 
